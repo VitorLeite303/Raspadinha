@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const prizeCountInput = document.getElementById('prizeCount');
     const setPrizesButton = document.getElementById('setPrizes');
     const resetButton = document.getElementById('reset');
+    const ocultarHeaderBtn = document.getElementById('ocultar-header-btn');
+    const mostrarHeaderBtn = document.getElementById('mostrar-header-btn');
+    const header = document.querySelector('header');
+
     let numbers = Array.from({ length: 50 }, (_, i) => i + 1);
     let prizeNumbers = [];
     let buttons = [];
@@ -22,10 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleClick(button, number) {
         if (!button.classList.contains('clicked')) {
             button.classList.add('clicked');
-            button.disabled = true; // Desabilitar o botão
+            button.disabled = true;
             if (prizeNumbers.includes(number)) {
                 button.classList.add('prize');
-                alert('Parabéns! Você encontrou um prêmio!');
+                alert('Parabéns! Você acaba de ganhar 1 barrinha de cereal grátis!');
             } else {
                 alert('Tente novamente!');
             }
@@ -53,12 +57,26 @@ document.addEventListener('DOMContentLoaded', () => {
         prizeNumbers = [];
         buttons.forEach(button => {
             button.classList.remove('clicked', 'prize');
-            button.disabled = false; // Habilitar o botão novamente
+            button.disabled = false;
         });
+    }
+
+    function toggleHeaderVisibility() {
+        if (header.style.display === 'none') {
+            header.style.display = 'flex';
+            ocultarHeaderBtn.style.display = 'inline-block';
+            mostrarHeaderBtn.style.display = 'none';
+        } else {
+            header.style.display = 'none';
+            ocultarHeaderBtn.style.display = 'none';
+            mostrarHeaderBtn.style.display = 'inline-block';
+        }
     }
 
     setPrizesButton.addEventListener('click', setPrizes);
     resetButton.addEventListener('click', reset);
+    ocultarHeaderBtn.addEventListener('click', toggleHeaderVisibility);
+    mostrarHeaderBtn.addEventListener('click', toggleHeaderVisibility);
 
     generateButtons();
 });
