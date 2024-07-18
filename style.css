@@ -1,0 +1,139 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    background-color: #007BFF;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.controls {
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.controls button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #007BFF;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.controls button:hover {
+    background-color: #e6f2ff;
+}
+
+.controls button:active {
+    background-color: #b3d1ff;
+}
+
+.container {
+    text-align: center;
+    margin-top: 80px; /* Para deixar espaço abaixo da barra superior */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 95%;
+    margin: 20px auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+button.number-button {
+    width: 100%;
+    padding: 25px;
+    font-size: 20px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 8px;
+}
+
+button.number-button:hover {
+    background-color: #0056b3;
+}
+
+button.number-button:active {
+    background-color: #004080;
+    transform: scale(0.95);
+}
+
+button.number-button.clicked {
+    background-color: #ccc;
+    cursor: default;
+}
+
+button.number-button.prize {
+    background-color: #28a745;
+}
+
+@media (max-width: 600px) {
+    .controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .controls input {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    }
+    button.number-button {
+        padding: 20px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 400px) {
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    }
+    button.number-button {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
